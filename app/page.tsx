@@ -1,101 +1,87 @@
-import Image from "next/image";
+import Link from "next/link";
+import Image from 'next/image';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="relative min-h-screen flex items-center justify-center w-full overflow-hidden">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {/* Background SVG Animation */}
+      <div id="bg-wrap" className="absolute inset-0 z-0">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
+        
+          <defs>
+            <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5">
+              <animate attributeName="fx" dur="34s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+              <stop offset="0%" stop-color="rgba(255, 0, 255, 1)"></stop>
+              <stop offset="100%" stop-color="rgba(255, 0, 255, 0)"></stop>
+            </radialGradient>
+            <radialGradient id="Gradient2" cx="50%" cy="50%" fx="2.68147%" fy="50%" r=".5">
+              <animate attributeName="fx" dur="23.5s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+              <stop offset="0%" stop-color="rgba(255, 255, 0, 1)"></stop>
+              <stop offset="100%" stop-color="rgba(255, 255, 0, 0)"></stop>
+            </radialGradient>
+            <radialGradient id="Gradient3" cx="50%" cy="50%" fx="0.836536%" fy="50%" r=".5">
+              <animate attributeName="fx" dur="21.5s" values="0%;3%;0%" repeatCount="indefinite"></animate>
+              <stop offset="0%" stop-color="rgba(0, 255, 255, 1)"></stop>
+              <stop offset="100%" stop-color="rgba(0, 255, 255, 0)"></stop>
+            </radialGradient>
+            <radialGradient id="Gradient4" cx="50%" cy="50%" fx="4.56417%" fy="50%" r=".5">
+              <animate attributeName="fx" dur="23s" values="0%;5%;0%" repeatCount="indefinite"></animate>
+              <stop offset="0%" stop-color="rgba(0, 255, 0, 1)"></stop>
+              <stop offset="100%" stop-color="rgba(0, 255, 0, 0)"></stop>
+            </radialGradient>
+            <radialGradient id="Gradient5" cx="50%" cy="50%" fx="2.65405%" fy="50%" r=".5">
+              <animate attributeName="fx" dur="24.5s" values="0%;5%;0%" repeatCount="indefinite"></animate>
+              <stop offset="0%" stop-color="rgba(0,0,255, 1)"></stop>
+              <stop offset="100%" stop-color="rgba(0,0,255, 0)"></stop>
+            </radialGradient>
+            <radialGradient id="Gradient6" cx="50%" cy="50%" fx="0.981338%" fy="50%" r=".5">
+              <animate attributeName="fx" dur="25.5s" values="0%;5%;0%" repeatCount="indefinite"></animate>
+              <stop offset="0%" stop-color="rgba(255,0,0, 1)"></stop>
+              <stop offset="100%" stop-color="rgba(255,0,0, 0)"></stop>
+            </radialGradient>
+          </defs>
+          <rect x="13.744%" y="1.18473%" width="100%" height="100%" fill="url(#Gradient1)" transform="rotate(334.41 50 50)">
+            <animate attributeName="x" dur="20s" values="25%;0%;25%" repeatCount="indefinite"></animate>
+            <animate attributeName="y" dur="21s" values="0%;25%;0%" repeatCount="indefinite"></animate>
+            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="7s" repeatCount="indefinite"></animateTransform>
+          </rect>
+          <rect x="-2.17916%" y="35.4267%" width="100%" height="100%" fill="url(#Gradient2)" transform="rotate(255.072 50 50)">
+            <animate attributeName="x" dur="23s" values="-25%;0%;-25%" repeatCount="indefinite"></animate>
+            <animate attributeName="y" dur="24s" values="0%;50%;0%" repeatCount="indefinite"></animate>
+            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="12s" repeatCount="indefinite"></animateTransform>
+          </rect>
+          <rect x="9.00483%" y="14.5733%" width="100%" height="100%" fill="url(#Gradient3)" transform="rotate(139.903 50 50)">
+            <animate attributeName="x" dur="25s" values="0%;25%;0%" repeatCount="indefinite"></animate>
+            <animate attributeName="y" dur="12s" values="0%;25%;0%" repeatCount="indefinite"></animate>
+            <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="9s" repeatCount="indefinite"></animateTransform>
+          </rect>
+        </svg>
+      </div>
+
+      {/* Content Block */}
+
+      {/* Content Block */}
+      
+      <div className="relative z-10 p-8 rounded-lg shadow-lg text-center w-full max-w-lg bg-white/10">
+      <Image
+        src="/images/ads-megaphone.png" // Path relative to the public folder
+        alt="Marketing Agency"
+        width={1000} // Specify width
+        height={600} // Specify height
+      />
+        <h1 className="text-3xl font-bold">Welcome to My Marketing Agency</h1>
+        
+        <p className="mt-4">
+          We specialize in delivering outstanding digital marketing solutions tailored to your needs.
+        </p>
+        <button className="mt-6 px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-blue-600 transition">
+          Get Started
+        </button>
+      </div>
     </div>
   );
-}
+};
+
+
+export default Home;
