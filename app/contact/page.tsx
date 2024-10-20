@@ -1,6 +1,53 @@
 // app/contact/page.tsx
 
+"use client"; // Mark this component as a Client Component
+
+import { useState } from 'react';
+
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData), // Send form data as JSON
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert('Your message has been sent successfully!');
+        // Optionally reset the form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+        });
+      } else {
+        alert('Failed to send message: ' + result.error);
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('An error occurred while sending your message. Please try again.');
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center bg-white/5 mt-20 text-white p-8">
       <h1 className="text-5xl font-bold mb-8">Get in Touch</h1>
@@ -8,7 +55,7 @@ const Contact = () => {
         Fill in the form below and one of our agents will get back to you shortly.
       </p>
 
-      <form className="w-full max-w-4xl bg-white/10 p-8 rounded-lg shadow-lg">
+      <form className="w-full max-w-4xl bg-white/10 p-8 rounded-lg shadow-lg" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Name Field */}
           <div className="mb-6">
@@ -17,8 +64,11 @@ const Contact = () => {
               type="text"
               id="name"
               name="name"
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="Your name"
+              required
             />
           </div>
 
@@ -29,8 +79,11 @@ const Contact = () => {
               type="email"
               id="email"
               name="email"
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="Your email"
+              required
             />
           </div>
 
@@ -41,8 +94,11 @@ const Contact = () => {
               type="tel"
               id="phone"
               name="phone"
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="Your phone number"
+              required
             />
           </div>
 
@@ -53,8 +109,11 @@ const Contact = () => {
               id="message"
               name="message"
               rows={4}
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="Your message"
+              required
             ></textarea>
           </div>
         </div>

@@ -3,6 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
  import Header from '../components/Header'; 
 
+import React from 'react';
+import { AuthProvider } from '../context/AuthContext'; // Adjust the path as necessary
+
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -25,6 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <AuthProvider>
     <html lang="en">
       <head> <link
           href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
@@ -84,5 +89,6 @@ export default function RootLayout({
         </main>
       </body>
     </html>
+    </AuthProvider>
   );
 }
