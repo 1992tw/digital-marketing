@@ -14,7 +14,7 @@ if (!uri) {
 }
 
 declare global {
-  // Adding custom global type for _mongoClientPromise
+  // Adding custom global type for _mongoClientPromise with undefined as a possible type
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
